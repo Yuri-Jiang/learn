@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1-3promise</title>
+</head>
+<body>
+	<script>
+
+		var a=new Promise(function(resolve, reject) {
+		        setTimeout(function() {
+		            console.log('a')
+		            resolve('a')
+		        }, 2000)
+		    })
+		
+		var b=new Promise(function(resolve, reject) {
+			        setTimeout(function() {
+			            console.log('b')
+			            resolve('b')
+			        }, 2000)
+			    })
+		
+		var c=new Promise(function(resolve, reject) {
+			        setTimeout(function() {
+			            console.log('c')
+			            resolve('c')
+			        }, 2000)
+			    })
+		
+		var d=new Promise(function(resolve, reject) {
+			        setTimeout(function() {
+			            console.log('d')
+			            resolve('d')
+			        }, 2000)
+			    })
+
+		function sequenceTasks(tasks) {
+		    return tasks.reduce(function (promise, task) {
+	    		if(Array.isArray(task)){
+	    			return promise.then(function(){
+	    				Promise.all(task)
+	    			})
+	    		}else{
+	    			return promise.then(task)
+	    		}
+		    }, Promise.resolve());
+		}
+		
+		
+		function flow() {
+		    return sequenceTasks([a,[b,c],d]);
+		}
+
+		flow();
+	</script>
+</body>
+</html>

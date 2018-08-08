@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1-1自定义事件系统</title>
+</head>
+<body>
+	<script>
+	    class EventEmitter {
+	        constructor(){
+	            this.eventlist = {};
+	        }
+	        emit(arr){
+	            for(let x in arr){
+	                let { type, value } = arr[x];
+	                let _run = 1;
+	                let _find = function(list){
+	                    for(let i in list){
+	                        if(i === type){
+	                            for(let j in list[i]){
+	                                list[i][j](value);
+	                                if( _run ){
+	                                    delete list[i];
+	                                }
+	                            }
+	                        }
+	                    }
+	                    _run = 0;
+	                };
+	                _find(this.eventlist);
+	            }
+	        }
+	        on(event, fn){
+	            this.eventlist[event] = {};
+	            this.eventlist[event][fn.name] = fn;
+	        }
+	        off(event, fn){
+	            if(this.eventlist[event]){
+	                delete this.eventlist[event][fn.name];
+	            }
+	        }
+	    }
+	    const emitter = new EventEmitter();
+
+	    const handler = function(evt) {
+	        console.log(1, evt);
+	    };
+	    emitter.on('foo', handler);
+	    emitter.on('bar', handler);
+	    emitter.emit([{ type: 'foo', value: 'hello' },{ type: 'bar', value: 'world' }]);
+	</script>
+</body>
+</html>

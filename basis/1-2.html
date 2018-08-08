@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1-2使用 requestAnimationFrame 实现类似 setInterval 的计时器</title>
+</head>
+<body>
+	<div id="time"></div>
+	<script>
+		var time=document.getElementById("time");
+		var count=1000;
+		function frameAnimation(){
+			if(count>0){
+				count--
+				time.innerHTML=count;
+				window.requestAnimationFrame(frameAnimation)
+			}
+		}
+		window.requestAnimationFrame(frameAnimation)
+	</script>
+</body>
+</html>
