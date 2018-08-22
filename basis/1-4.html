@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>盒模型应用</title>
+	<style type="text/css">
+		.wrap{
+			display: flex;
+		}
+		.box,.boxes{
+			display: flex;
+			width:90px;
+			height:90px;
+			border:1px solid #000;
+			margin:5px;
+		}
+		.c{
+			width:30px;
+			height:30px;
+			background: #000;
+			border-radius: 50%;
+		}
+		.box1{
+			justify-content:center;
+		}
+		.box2{
+			justify-content:flex-end;
+		}
+		.box3{
+			align-items: center;
+		}
+		.box4{
+			justify-content: center;
+			align-items: center;
+		}
+		.box5{
+			align-items:center;
+			justify-content:flex-end;
+		}
+		.box6{
+			align-items: flex-end;
+			justify-content: flex-start;
+		}
+		.box7{
+			align-items: flex-end;
+			justify-content: center;
+		}
+		.box8{
+			align-items: flex-end;
+			justify-content: flex-end;
+		}
+		.boxes{
+			justify-content:space-between;
+		}
+		.boxes2 .c:nth-child(2){
+			align-self:flex-end;
+		}
+		.boxes3 .c:nth-child(2){
+			align-self:center;
+		}
+		.boxes3 .c:nth-child(3){
+			align-self:flex-end;
+		}
+		.boxes4{
+			display: flex;
+			align-content:space-between;
+			flex-wrap:wrap;
+		}
+		.column {
+			flex-basis: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="box">
+			<span class="c"></span>
+		</div>
+		<div class="box box1">
+			<span class="c"></span>
+		</div>
+		<div class="box box2">
+			<span class="c"></span>
+		</div>
+		<div class="box box3">
+			<span class="c"></span>
+		</div>
+		<div class="box box4">
+			<span class="c"></span>
+		</div>
+		<div class="box box5">
+			<span class="c"></span>
+		</div>
+		<div class="box box6">
+			<span class="c"></span>
+		</div>
+		<div class="box box7">
+			<span class="c"></span>
+		</div>
+		<div class="box box8">
+			<span class="c"></span>
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="boxes boxes2">
+			<span class="c"></span>
+			<span class="c"></span>
+		</div>
+		<div class="boxes boxes3">
+			<span class="c"></span>
+			<span class="c"></span>
+			<span class="c"></span>
+		</div>
+		<div class="boxes boxes4">
+			<div class="column">
+				<span class="c"></span>
+				<span class="c"></span>
+			</div>
+			<div class="column">
+				<span class="c"></span>
+				<span class="c"></span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
