@@ -1,4 +1,4 @@
-//一个通用的科里化转化函数
+//一个通用的柯里化转化函数
 function Curring(func) {
     return function() {
         var args = Array.prototype.slice.call(arguments, 0);
